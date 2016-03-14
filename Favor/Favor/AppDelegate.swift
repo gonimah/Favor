@@ -17,11 +17,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         // this will check exisiting token http://stackoverflow.com/questions/32950937/fbsdkaccesstoken-currentaccesstoken-nil-after-quitting-app
-        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        //FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
         if (FBSDKAccessToken.currentAccessToken() != nil) {
             let mainStoryboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let initialViewController : UIViewController = mainStoryboard.instantiateViewControllerWithIdentifier("dashboardViewController") as UIViewController
+            //this will take us to the dashboard - added the nav contoller on top of it
+            let initialViewController : UIViewController = mainStoryboard.instantiateViewControllerWithIdentifier("navigationController") as UIViewController
             self.window?.rootViewController = initialViewController
             self.window?.makeKeyAndVisible()
         } else {
@@ -30,9 +31,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.window?.rootViewController = initialViewController
             self.window?.makeKeyAndVisible()
         }
-        
-        // Override point for customization after application launch.
-        //return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         return true
     }
     

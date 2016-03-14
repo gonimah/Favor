@@ -8,22 +8,71 @@
 
 import UIKit
 
-class DashboardViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
-    
+class DashboardViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, DashboardDelegate {
+    var myOpenFavors : [String] = []//["open favor 1", "open favor 2", "open favor 3"]
+    var myAcceptedFavors : [String] = []
+    var myRequestedFavors : [String] = []
+
+
+    @IBOutlet weak var listItems: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        listItems.dataSource = self
+        listItems.delegate = self
+        //listItems.reloadData()
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
-        //cell.textLabel?.text = choresListItems[indexPath.row]
-        
+        if (indexPath.section == 0) {
+            cell.textLabel?.text = myOpenFavors[indexPath.row]
+        } else if (indexPath.section == 1) {
+            cell.textLabel?.text = myAcceptedFavors[indexPath.row]
+        } else {
+            cell.textLabel?.text = myRequestedFavors[indexPath.row]
+        }
         return cell
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if (section == 0) {
+            return myOpenFavors.count
+        } else if (section == 1) {
+            return myAcceptedFavors.count
+        } else {
+            return myRequestedFavors.count
+        }
+    }
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 3
+    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 10
+    }
+    
+    func refresh() {
+        print("submitted favor!")
+        myOpenFavors.append("new favor 1!")
+        myOpenFavors.append("new favor 2!")
+
+        print(myOpenFavors)
+        listItems.reloadData()
+        
+    }
+    
+    func refreshOpenFavors(openFavor: String) {
+        myOpenFavors.append(openFavor)
+        listItems.reloadData()
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "pushCreateFavorSegue") {
+            let viewController:CreateFavorViewController = segue.destinationViewController as! CreateFavorViewController
+            viewController.delegate = self
+        }
     }
     
     
