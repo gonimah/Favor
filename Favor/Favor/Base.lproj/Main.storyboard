@@ -17,7 +17,22 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favor" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vQm-f2-mv9">
+                                <rect key="frame" x="192" y="90" width="216" height="139"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="216" id="d0I-0p-UVo"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="KohinoorDevanagari-Regular" family="Kohinoor Devanagari" pointSize="60"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" red="0.743266659" green="0.86976739999999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="vQm-f2-mv9" secondAttribute="bottom" constant="371" id="4Bf-Hj-ryB"/>
+                            <constraint firstItem="vQm-f2-mv9" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="70" id="Vla-mv-QRf"/>
+                            <constraint firstItem="vQm-f2-mv9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xd5-3B-fOo"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -78,6 +93,9 @@
                                 <date key="date" timeIntervalSinceReferenceDate="479516890.991597">
                                     <!--2016-03-12 23:08:10 +0000-->
                                 </date>
+                                <connections>
+                                    <action selector="datePickerAction:" destination="HvR-5z-iKG" eventType="valueChanged" id="Oy9-KU-4es"/>
+                                </connections>
                             </datePicker>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="For:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="idq-W7-ROb">
                                 <rect key="frame" x="20" y="302" width="560" height="21"/>

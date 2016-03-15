@@ -10,24 +10,19 @@ import UIKit
 class DashboardViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, DashboardDelegate {
     @IBOutlet weak var listItems: UITableView!
     
-    var myOpenFavors : [String] = []//["open favor 1", "open favor 2", "open favor 3"]
+    var myOpenFavors : [String] = []
     var myAcceptedFavors : [String] = ["You haven't accepted any favors yet!"]
     var myRequestedFavors : [String] = ["No one has picked up any of your favors yet!"]
-    
-    var profilePicUrl = ""
     var image : UIImage!
-    
+    var profilePicUrl = ""
+    var displayName = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         listItems.dataSource = self
         listItems.delegate = self
         
-        downloadImage(NSURL(string: profilePicUrl)!)
-        
-        //image = UIImage(named: "tmp_pic.jpeg")!
-        //image = image.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
-        //self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
+        displayUserInfo(NSURL(string: profilePicUrl)!)
         print("profilePicUrl= \(profilePicUrl)")
     }
     
@@ -44,11 +39,12 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (section == 0) {
+        switch(section) {
+        case 0:
             return myOpenFavors.count
-        } else if (section == 1) {
+        case 1:
             return myAcceptedFavors.count
-        } else {
+        default:
             return myRequestedFavors.count
         }
     }
@@ -58,11 +54,24 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 10
+        return 25
     }
     
-    func refreshOpenFavors(openFavor: String) {
-        myOpenFavors.append(openFavor)
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int)->String? {
+        switch(section) {
+        case 0:
+            return "My Open Favors"
+        case 1:
+            return "My Accepted Favors"
+        case 2:
+            return "Favors my Friends are Fulfilling"
+        default:
+            return ""
+        }
+    }
+    
+    func refreshOpenFavors(openFavor: String, deadline: String) {
+        myOpenFavors.append(openFavor + " by " + deadline)
         listItems.reloadData()
     }
     
@@ -79,18 +88,18 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
             }.resume()
     }
     
-    func downloadImage(url: NSURL){
+    func displayUserInfo(url: NSURL){
         print("Download Started")
         print("lastPathComponent: " + (url.lastPathComponent ?? ""))
         print("url: \(url)")
-        getDataFromUrl(url) { (data, response, error)  in
-            dispatch_async(dispatch_get_main_queue()) { () -> Void in
+        getDataFromUrl(url) { (data, response, error)  in dispatch_async(dispatch_get_main_queue()) { () -> Void in
                 guard let data = data where error == nil else { return }
                 print(response?.suggestedFilename ?? "")
                 print("Download Finished")
                 self.image = UIImage(data: data)!
                 self.image = self.image.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
                 self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: self.image, style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
+                self.navigationItem.title = "Welcome Back, " + self.displayName + "!"
             }
         }
     }

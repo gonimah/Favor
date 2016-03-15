@@ -9,7 +9,7 @@
 import UIKit
 
 protocol DashboardDelegate {
-    func refreshOpenFavors(favor: String)
+    func refreshOpenFavors(favor: String, deadline: String)
 }
 
 class CreateFavorViewController: UIViewController {
@@ -18,11 +18,21 @@ class CreateFavorViewController: UIViewController {
     @IBOutlet weak var favorInputTextField: UITextField!
     @IBOutlet weak var favorDueDateInputPicker: UIDatePicker!
     @IBOutlet weak var favorPriceInputField: UITextField!
+    
+    var favorDeadline = ""
 
     @IBAction func submitFavor(sender: AnyObject) {
         if let favor = favorInputTextField.text {
-            delegate?.refreshOpenFavors(favor)
+            
+            delegate?.refreshOpenFavors(favor, deadline: self.favorDeadline)
         }
         self.navigationController?.popViewControllerAnimated(true)
+    }
+    
+    @IBAction func datePickerAction(sender: AnyObject) {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateStyle = .FullStyle
+        let strDate = dateFormatter.stringFromDate(favorDueDateInputPicker.date)
+        self.favorDeadline = strDate
     }
 }

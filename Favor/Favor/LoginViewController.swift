@@ -20,15 +20,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         }
     }
     
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        if (segue.identifier == "goToDashboard") {
-//            let navigationController = segue.destinationViewController as! UINavigationController
-//            let dashboardViewController = navigationController.topViewController as! DashboardViewController
-//            dashboardViewController.tempText = "hi"
-//            
-//        }
-//    }
-    
     // Facebook Delegate Methods
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
         loginButton.hidden = true
@@ -75,8 +66,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     func getFBdata() {
         var dict : NSDictionary!
-        FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, picture.type(small), email"])
-            .startWithCompletionHandler({ (connection, result, error) -> Void in
+        FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, picture.type(small), email"]).startWithCompletionHandler({ (connection, result, error) -> Void in
                 if (error == nil){
                     dict = result as! NSDictionary
                     
@@ -87,6 +77,8 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                     let data = picture!["data"] as? Dictionary<String, AnyObject>
                     let url = data!["url"] as? String
                     
+                    let userDisplayName = dict!["first_name"] as? String
+                    dashboardViewController.displayName = userDisplayName!
                     dashboardViewController.profilePicUrl = url!
                     self.presentViewController(navigationController, animated: true, completion: nil)
                 }
