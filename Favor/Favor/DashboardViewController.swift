@@ -5,22 +5,30 @@
 //  Created by Gonimah, Mayada on 3/8/16.
 //  Copyright © 2016 Gonimah, Mayada. All rights reserved.
 //
-
 import UIKit
 
 class DashboardViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, DashboardDelegate {
-    var myOpenFavors : [String] = []//["open favor 1", "open favor 2", "open favor 3"]
-    var myAcceptedFavors : [String] = []
-    var myRequestedFavors : [String] = []
-
-
     @IBOutlet weak var listItems: UITableView!
+    
+    var myOpenFavors : [String] = []//["open favor 1", "open favor 2", "open favor 3"]
+    var myAcceptedFavors : [String] = ["You haven't accepted any favors yet!"]
+    var myRequestedFavors : [String] = ["No one has picked up any of your favors yet!"]
+    
+    var profilePicUrl = ""
+    var image : UIImage!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         listItems.dataSource = self
         listItems.delegate = self
-        //listItems.reloadData()
+        
+        downloadImage(NSURL(string: profilePicUrl)!)
+        
+        //image = UIImage(named: "tmp_pic.jpeg")!
+        //image = image.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+        //self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
+        print("profilePicUrl= \(profilePicUrl)")
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -53,16 +61,6 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
         return 10
     }
     
-    func refresh() {
-        print("submitted favor!")
-        myOpenFavors.append("new favor 1!")
-        myOpenFavors.append("new favor 2!")
-
-        print(myOpenFavors)
-        listItems.reloadData()
-        
-    }
-    
     func refreshOpenFavors(openFavor: String) {
         myOpenFavors.append(openFavor)
         listItems.reloadData()
@@ -75,49 +73,25 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
         }
     }
     
-    
-    //    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-    //        // Return false if you do not want the specified item to be editable.
-    //        return true
-    //    }
-    
-    
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-    if editingStyle == .Delete {
-    // Delete the row from the data source
-    tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-    } else if editingStyle == .Insert {
-    // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+    func getDataFromUrl(url:NSURL, completion: ((data: NSData?, response: NSURLResponse?, error: NSError? ) -> Void)) {
+        NSURLSession.sharedSession().dataTaskWithURL(url) { (data, response, error) in
+            completion(data: data, response: response, error: error)
+            }.resume()
     }
+    
+    func downloadImage(url: NSURL){
+        print("Download Started")
+        print("lastPathComponent: " + (url.lastPathComponent ?? ""))
+        print("url: \(url)")
+        getDataFromUrl(url) { (data, response, error)  in
+            dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                guard let data = data where error == nil else { return }
+                print(response?.suggestedFilename ?? "")
+                print("Download Finished")
+                self.image = UIImage(data: data)!
+                self.image = self.image.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+                self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: self.image, style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
+            }
+        }
     }
-    */
-    
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-    
-    }
-    */
-    
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-    // Return false if you do not want the item to be re-orderable.
-    return true
-    }
-    */
-    
-    /*
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
-    }
-    */
-    
-
 }

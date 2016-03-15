@@ -15,6 +15,7 @@
 		6917E0771C8D21290071D2B6 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6917E0741C8D21290071D2B6 /* FBSDKCoreKit.framework */; };
 		6917E0781C8D21290071D2B6 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6917E0751C8D21290071D2B6 /* FBSDKLoginKit.framework */; };
 		6917E0791C8D21290071D2B6 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6917E0761C8D21290071D2B6 /* FBSDKShareKit.framework */; };
+		6955B6C21C9781E1000778A7 /* tmp_pic.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 6955B6C11C9781E1000778A7 /* tmp_pic.jpeg */; };
 		6973165A1C925B6800F33EFE /* CreateFavorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697316591C925B6800F33EFE /* CreateFavorViewController.swift */; };
 		69AEB9531C8FAA5A00473B32 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AEB9521C8FAA5A00473B32 /* DashboardViewController.swift */; };
 /* End PBXBuildFile section */
@@ -31,6 +32,7 @@
 		6917E0751C8D21290071D2B6 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		6917E0761C8D21290071D2B6 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
 		693A37671C8D28490079BDB2 /* Favor-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Favor-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
+		6955B6C11C9781E1000778A7 /* tmp_pic.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tmp_pic.jpeg; sourceTree = "<group>"; };
 		697316591C925B6800F33EFE /* CreateFavorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateFavorViewController.swift; sourceTree = "<group>"; };
 		69AEB9521C8FAA5A00473B32 /* DashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -76,6 +78,7 @@
 				697316591C925B6800F33EFE /* CreateFavorViewController.swift */,
 				69AEB9521C8FAA5A00473B32 /* DashboardViewController.swift */,
 				6917E05B1C8D10190071D2B6 /* Assets.xcassets */,
+				6955B6C11C9781E1000778A7 /* tmp_pic.jpeg */,
 				6917E05D1C8D10190071D2B6 /* LaunchScreen.storyboard */,
 				6917E0601C8D10190071D2B6 /* Info.plist */,
 			);
@@ -151,6 +154,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6955B6C21C9781E1000778A7 /* tmp_pic.jpeg in Resources */,
 				6917E05F1C8D10190071D2B6 /* LaunchScreen.storyboard in Resources */,
 				6917E05C1C8D10190071D2B6 /* Assets.xcassets in Resources */,
 				6917E05A1C8D10190071D2B6 /* Main.storyboard in Resources */,

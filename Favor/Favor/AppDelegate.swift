@@ -5,15 +5,12 @@
 //  Created by Gonimah, Mayada on 3/6/16.
 //  Copyright © 2016 Gonimah, Mayada. All rights reserved.
 //
-
 import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         // this will check exisiting token http://stackoverflow.com/questions/32950937/fbsdkaccesstoken-currentaccesstoken-nil-after-quitting-app
@@ -21,7 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if (FBSDKAccessToken.currentAccessToken() != nil) {
             let mainStoryboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            //this will take us to the dashboard - added the nav contoller on top of it
             let initialViewController : UIViewController = mainStoryboard.instantiateViewControllerWithIdentifier("navigationController") as UIViewController
             self.window?.rootViewController = initialViewController
             self.window?.makeKeyAndVisible()
@@ -34,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
         return FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
     }
 
