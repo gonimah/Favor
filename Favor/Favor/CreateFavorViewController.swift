@@ -14,7 +14,7 @@ protocol DashboardDelegate {
 
 class CreateFavorViewController: UIViewController {
     var delegate : DashboardDelegate?
-
+    
     @IBOutlet weak var favorInputTextField: UITextField!
     @IBOutlet weak var favorDueDateInputPicker: UIDatePicker!
     @IBOutlet weak var favorPriceInputField: UITextField!

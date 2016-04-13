@@ -7,16 +7,42 @@
 import UIKit
 
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var loginButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if (FBSDKAccessToken.currentAccessToken() != nil) {
-            fetchUserData()
+            //fetchUserData()
+            getFBdata()
         } else {
-            let loginView : FBSDKLoginButton = FBSDKLoginButton()
-            view.addSubview(loginView)
-            loginView.center = view.center
-            loginView.readPermissions = ["public_profile", "email", "user_friends"]
-            loginView.delegate = self
+            let facebookLoginButton : FBSDKLoginButton = FBSDKLoginButton()
+            facebookLoginButton.readPermissions = ["public_profile", "email", "user_friends"]
+            facebookLoginButton.delegate = self
+            
+            view.addSubview(facebookLoginButton)
+            facebookLoginButton.translatesAutoresizingMaskIntoConstraints = false
+            
+            let facebookLoginButtonHorizontalConstraint = NSLayoutConstraint(item: facebookLoginButton, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: loginButton, attribute: NSLayoutAttribute.CenterX, multiplier: 1, constant: 0)
+            view.addConstraint(facebookLoginButtonHorizontalConstraint)
+            
+            let facebookLoginButtonVerticalConstraint = NSLayoutConstraint(item: facebookLoginButton, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: loginButton, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: 10)
+            view.addConstraint(facebookLoginButtonVerticalConstraint)
+            
+            let signUpButton   = UIButton(type: UIButtonType.System) as UIButton
+            signUpButton.setTitle("Sign up", forState: UIControlState.Normal)
+            signUpButton.titleLabel?.font = UIFont(name: "Avenir Book", size: 15.0)
+            signUpButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+            signUpButton.addTarget(self, action: "signUpButtonAction:", forControlEvents: UIControlEvents.TouchUpInside)
+            signUpButton.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview(signUpButton)
+            
+            let signUpButtonHorizontalConstraint = NSLayoutConstraint(item: signUpButton, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: facebookLoginButton, attribute: NSLayoutAttribute.CenterX, multiplier: 1, constant: 0)
+            view.addConstraint(signUpButtonHorizontalConstraint)
+            
+            let signUpButtonVerticalConstraint = NSLayoutConstraint(item: signUpButton, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: facebookLoginButton, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: 10)
+            view.addConstraint(signUpButtonVerticalConstraint)
         }
     }
     
@@ -29,7 +55,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         } else if result.isCancelled {
             print("Login cancelled: \(result)")
         } else {
-            //fetchUserData()
+            fetchUserData()
             getFBdata()
         }
     }
@@ -43,18 +69,8 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
     
     func fetchUserData() {
-        var dict : NSDictionary!
-        FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, picture.type(small), email"])
-            .startWithCompletionHandler({ (connection, result, error) -> Void in
-            if (error == nil){
-                dict = result as! NSDictionary
-//                print(dict)
-//                print(dict["picture"]!["data"]!!["url"])
-            }
-        })
-        
-        // get taggable friends
-        let fbRequest = FBSDKGraphRequest(graphPath:"/me/taggable_friends", parameters: nil);
+        // get user's friends
+        let fbRequest = FBSDKGraphRequest(graphPath:"/me/friends", parameters: nil);
         fbRequest.startWithCompletionHandler { (connection : FBSDKGraphRequestConnection!, result : AnyObject!, error : NSError!) -> Void in
             if (error == nil) {
                 print("Friends are : \(result)")
@@ -64,25 +80,27 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         }
     }
     
+    
     func getFBdata() {
         var dict : NSDictionary!
         FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, picture.type(small), email"]).startWithCompletionHandler({ (connection, result, error) -> Void in
-                if (error == nil){
-                    dict = result as! NSDictionary
-                    
-                    let navigationController = self.storyboard?.instantiateViewControllerWithIdentifier("navigationController") as! UINavigationController
-                    let dashboardViewController = navigationController.topViewController as! DashboardViewController
-                    
-                    let picture = dict["picture"] as? Dictionary<String, AnyObject>
-                    let data = picture!["data"] as? Dictionary<String, AnyObject>
-                    let url = data!["url"] as? String
-                    
-                    let userDisplayName = dict!["first_name"] as? String
-                    dashboardViewController.displayName = userDisplayName!
-                    dashboardViewController.profilePicUrl = url!
-                    self.presentViewController(navigationController, animated: true, completion: nil)
-                }
-            })
+            if (error == nil){
+                dict = result as! NSDictionary
+                let navigationController = self.storyboard?.instantiateViewControllerWithIdentifier("navigationController") as! UINavigationController
+                let dashboardViewController = navigationController.topViewController as! DashboardViewController
+                let picture = dict["picture"] as? Dictionary<String, AnyObject>
+                let data = picture!["data"] as? Dictionary<String, AnyObject>
+                let url = data!["url"] as? String
+                let userDisplayName = dict!["first_name"] as? String
+                dashboardViewController.displayName = userDisplayName!
+                dashboardViewController.profilePicUrl = url!
+                self.presentViewController(navigationController, animated: true, completion: nil)
+            }
+        })
+    }
+    
+    func signUpButtonAction(sender:UIButton!) {
+        print("sign up is still todo")
     }
 }
 
