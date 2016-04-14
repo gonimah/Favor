@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 protocol DashboardDelegate {
     func refreshOpenFavors(favor: String, deadline: String)
@@ -18,12 +19,16 @@ class CreateFavorViewController: UIViewController {
     @IBOutlet weak var favorDueDateInputPicker: UIDatePicker!
     @IBOutlet weak var favorPriceInputField: UITextField!
     var favorDeadline = ""
+    let ref = Firebase(url:"https://dummyfavor.firebaseio.com/test")
+
 
     @IBAction func submitFavor(sender: AnyObject) {
         if let favor = favorInputTextField.text {
             delegate?.refreshOpenFavors(favor, deadline: self.favorDeadline)
+            ref.setValue(favor)
         }
         self.dismissViewControllerAnimated(true, completion: {})
+
     }
     
     @IBAction func datePickerAction(sender: AnyObject) {
@@ -35,4 +40,5 @@ class CreateFavorViewController: UIViewController {
     @IBAction func cancelToDismissViewModally(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: {})
     }
+    
 }
