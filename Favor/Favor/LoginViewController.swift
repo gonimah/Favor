@@ -86,15 +86,24 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, picture.type(small), email"]).startWithCompletionHandler({ (connection, result, error) -> Void in
             if (error == nil){
                 dict = result as! NSDictionary
-                let navigationController = self.storyboard?.instantiateViewControllerWithIdentifier("navigationController") as! UINavigationController
-                let dashboardViewController = navigationController.topViewController as! DashboardViewController
                 let picture = dict["picture"] as? Dictionary<String, AnyObject>
                 let data = picture!["data"] as? Dictionary<String, AnyObject>
                 let url = data!["url"] as? String
                 let userDisplayName = dict!["first_name"] as? String
-                dashboardViewController.displayName = userDisplayName!
-                dashboardViewController.profilePicUrl = url!
-                self.presentViewController(navigationController, animated: true, completion: nil)
+                
+                
+                let tabBarController = self.storyboard?.instantiateViewControllerWithIdentifier("tabBarController") as! UITabBarController
+                //tabBarController.selectedIndex = 0
+                //let myOpenFavorsViewController = navigationController.topViewController as! MyOpenFavorsViewController
+                //var myOpenFavorsViewController : MyOpenFavorsViewController =  MyOpenFavorsViewController()
+                //myOpenFavorsViewController.myOpenFavors = ["mayada"]
+                //tabBarController.viewControllers = [myOpenFavorsViewController]
+                
+                
+                //myOpenFavorsViewController.displayName = userDisplayName!
+                //myOpenFavorsViewController.profilePicUrl = url!
+                // TODO?? how to pass data to my view constroller within a tab
+                self.presentViewController(tabBarController, animated: true, completion: nil)
             }
         })
     }

@@ -17,6 +17,7 @@
 		6917E0791C8D21290071D2B6 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6917E0761C8D21290071D2B6 /* FBSDKShareKit.framework */; };
 		6955B6C21C9781E1000778A7 /* tmp_pic.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 6955B6C11C9781E1000778A7 /* tmp_pic.jpeg */; };
 		6973165A1C925B6800F33EFE /* CreateFavorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697316591C925B6800F33EFE /* CreateFavorViewController.swift */; };
+		699A58E81CBF1DE000D2F514 /* MyOpenFavorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699A58E71CBF1DE000D2F514 /* MyOpenFavorsViewController.swift */; };
 		69AEB9531C8FAA5A00473B32 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AEB9521C8FAA5A00473B32 /* DashboardViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +35,7 @@
 		693A37671C8D28490079BDB2 /* Favor-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Favor-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		6955B6C11C9781E1000778A7 /* tmp_pic.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tmp_pic.jpeg; sourceTree = "<group>"; };
 		697316591C925B6800F33EFE /* CreateFavorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateFavorViewController.swift; sourceTree = "<group>"; };
+		699A58E71CBF1DE000D2F514 /* MyOpenFavorsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOpenFavorsViewController.swift; sourceTree = "<group>"; };
 		69AEB9521C8FAA5A00473B32 /* DashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -77,6 +79,7 @@
 				6917E0581C8D10190071D2B6 /* Main.storyboard */,
 				697316591C925B6800F33EFE /* CreateFavorViewController.swift */,
 				69AEB9521C8FAA5A00473B32 /* DashboardViewController.swift */,
+				699A58E71CBF1DE000D2F514 /* MyOpenFavorsViewController.swift */,
 				6917E05B1C8D10190071D2B6 /* Assets.xcassets */,
 				6955B6C11C9781E1000778A7 /* tmp_pic.jpeg */,
 				6917E05D1C8D10190071D2B6 /* LaunchScreen.storyboard */,
@@ -171,6 +174,7 @@
 				6917E0571C8D10190071D2B6 /* LoginViewController.swift in Sources */,
 				69AEB9531C8FAA5A00473B32 /* DashboardViewController.swift in Sources */,
 				6973165A1C925B6800F33EFE /* CreateFavorViewController.swift in Sources */,
+				699A58E81CBF1DE000D2F514 /* MyOpenFavorsViewController.swift in Sources */,
 				6917E0551C8D10190071D2B6 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
