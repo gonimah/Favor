@@ -321,7 +321,7 @@
                             <constraint firstItem="Qrl-lm-Eqs" firstAttribute="leading" secondItem="Cte-OZ-Sm8" secondAttribute="leading" id="vXt-k6-NEN"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="hCf-lh-Wtc"/>
+                    <tabBarItem key="tabBarItem" title="Requested Favors" id="hCf-lh-Wtc"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qHk-oC-p6b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -367,7 +367,7 @@
                             <constraint firstItem="MxJ-eq-i8p" firstAttribute="leading" secondItem="AHF-O9-jjD" secondAttribute="leading" id="yVI-BP-dwV"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="O5l-pj-yrx"/>
+                    <tabBarItem key="tabBarItem" title="Browse Favors" id="O5l-pj-yrx"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K15-Nl-2l3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -385,7 +385,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6jl-IA-CbC">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6jl-IA-CbC" userLabel="BlueView">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="69"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4tY-vz-ocv">
@@ -428,15 +428,36 @@
                                     <constraint firstAttribute="height" constant="474" id="Ki5-Te-aHj"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="myOpenFavorCell" id="Pje-sz-sar">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="myOpenFavorCell" textLabel="zCc-38-GlZ" detailTextLabel="3UZ-ur-oxV" style="IBUITableViewCellStyleSubtitle" id="Pje-sz-sar">
                                         <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Pje-sz-sar" id="b7L-Xv-R4F">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zCc-38-GlZ">
+                                                    <rect key="frame" x="15" y="3" width="31" height="22"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3UZ-ur-oxV">
+                                                    <rect key="frame" x="15" y="25" width="38" height="15.5"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="11"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Ki5-Te-aHj"/>
+                                    </mask>
+                                </variation>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -448,6 +469,7 @@
                             <constraint firstItem="9XO-78-URz" firstAttribute="centerX" secondItem="Pcj-9S-TU6" secondAttribute="centerX" id="qU1-nk-LKI"/>
                             <constraint firstItem="9XO-78-URz" firstAttribute="top" secondItem="6jl-IA-CbC" secondAttribute="bottom" constant="8" id="viq-mt-XkZ"/>
                             <constraint firstAttribute="trailing" secondItem="6jl-IA-CbC" secondAttribute="trailing" id="x6p-Ul-SvM"/>
+                            <constraint firstItem="oM3-NN-jOt" firstAttribute="top" secondItem="9XO-78-URz" secondAttribute="bottom" id="zfi-Gy-g9o"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -455,7 +477,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="i4U-ds-4WO"/>
+                    <tabBarItem key="tabBarItem" title="My Open Favors" id="i4U-ds-4WO"/>
                     <connections>
                         <outlet property="listItems" destination="9XO-78-URz" id="mJn-Ia-NOC"/>
                     </connections>
@@ -476,7 +498,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IBy-Qn-4yy">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IBy-Qn-4yy" userLabel="BlueView">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="69"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cJI-8s-VbB">
@@ -496,15 +518,33 @@
                                     <constraint firstItem="cJI-8s-VbB" firstAttribute="top" secondItem="IBy-Qn-4yy" secondAttribute="top" constant="20" id="tgu-Ta-Hcn"/>
                                 </constraints>
                             </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DlI-mh-K3T" userLabel="List Items">
+                                <rect key="frame" x="0.0" y="77" width="600" height="474"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="myAcceptedFavorCell" id="tXg-5M-Mmc">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tXg-5M-Mmc" id="Cbl-HL-XT3">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="DlI-mh-K3T" firstAttribute="centerX" secondItem="H0l-cy-PT2" secondAttribute="centerX" id="PBG-4p-9Yo"/>
+                            <constraint firstItem="DlI-mh-K3T" firstAttribute="leading" secondItem="IBy-Qn-4yy" secondAttribute="leading" id="PpZ-CE-Hw1"/>
                             <constraint firstItem="IBy-Qn-4yy" firstAttribute="top" secondItem="H0l-cy-PT2" secondAttribute="top" id="evJ-3q-8iO"/>
+                            <constraint firstItem="fJW-kH-eeD" firstAttribute="top" secondItem="DlI-mh-K3T" secondAttribute="bottom" id="f72-xP-0zg"/>
+                            <constraint firstItem="DlI-mh-K3T" firstAttribute="top" secondItem="IBy-Qn-4yy" secondAttribute="bottom" constant="8" id="jf5-1a-NpT"/>
                             <constraint firstAttribute="trailing" secondItem="IBy-Qn-4yy" secondAttribute="trailing" id="kfz-Hm-g3k"/>
                             <constraint firstItem="IBy-Qn-4yy" firstAttribute="leading" secondItem="H0l-cy-PT2" secondAttribute="leading" id="zcd-eb-SYP"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="Gfv-Pl-BKj"/>
+                    <tabBarItem key="tabBarItem" title="Accepted Favors" id="Gfv-Pl-BKj"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BgB-IR-ZLQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

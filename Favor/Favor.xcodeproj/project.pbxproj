@@ -19,6 +19,7 @@
 		6973165A1C925B6800F33EFE /* CreateFavorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697316591C925B6800F33EFE /* CreateFavorViewController.swift */; };
 		699A58E81CBF1DE000D2F514 /* MyOpenFavorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699A58E71CBF1DE000D2F514 /* MyOpenFavorsViewController.swift */; };
 		69AEB9531C8FAA5A00473B32 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AEB9521C8FAA5A00473B32 /* DashboardViewController.swift */; };
+		69E435B21CC053E300467635 /* Favor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69E435B11CC053E300467635 /* Favor.swift */; };
 		CEF9C0A8D66B792EC10807DC /* Pods_Favor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F844684EB1203DEDF934E2BC /* Pods_Favor.framework */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +40,7 @@
 		697316591C925B6800F33EFE /* CreateFavorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateFavorViewController.swift; sourceTree = "<group>"; };
 		699A58E71CBF1DE000D2F514 /* MyOpenFavorsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOpenFavorsViewController.swift; sourceTree = "<group>"; };
 		69AEB9521C8FAA5A00473B32 /* DashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
+		69E435B11CC053E300467635 /* Favor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Favor.swift; sourceTree = "<group>"; };
 		CC42EBDD02F54915D305CD62 /* Pods-Favor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Favor.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Favor/Pods-Favor.debug.xcconfig"; sourceTree = "<group>"; };
 		F844684EB1203DEDF934E2BC /* Pods_Favor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Favor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -80,6 +82,7 @@
 		6917E0531C8D10190071D2B6 /* Favor */ = {
 			isa = PBXGroup;
 			children = (
+				69E435B01CC053CF00467635 /* Models */,
 				693A37671C8D28490079BDB2 /* Favor-Bridging-Header.h */,
 				6917E0541C8D10190071D2B6 /* AppDelegate.swift */,
 				6917E0561C8D10190071D2B6 /* LoginViewController.swift */,
@@ -103,6 +106,14 @@
 				6917E0761C8D21290071D2B6 /* FBSDKShareKit.framework */,
 			);
 			name = "Facebook Frameworks";
+			sourceTree = "<group>";
+		};
+		69E435B01CC053CF00467635 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				69E435B11CC053E300467635 /* Favor.swift */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 		8F7550DFB08268F9EF0D1896 /* Frameworks */ = {
@@ -250,6 +261,7 @@
 				69AEB9531C8FAA5A00473B32 /* DashboardViewController.swift in Sources */,
 				6973165A1C925B6800F33EFE /* CreateFavorViewController.swift in Sources */,
 				699A58E81CBF1DE000D2F514 /* MyOpenFavorsViewController.swift in Sources */,
+				69E435B21CC053E300467635 /* Favor.swift in Sources */,
 				6917E0551C8D10190071D2B6 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
