@@ -41,5 +41,4 @@ struct Favor {
             "completed": completed
         ]
     }
-    
 }

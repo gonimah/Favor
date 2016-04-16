@@ -15,11 +15,14 @@
 		6917E0771C8D21290071D2B6 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6917E0741C8D21290071D2B6 /* FBSDKCoreKit.framework */; };
 		6917E0781C8D21290071D2B6 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6917E0751C8D21290071D2B6 /* FBSDKLoginKit.framework */; };
 		6917E0791C8D21290071D2B6 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6917E0761C8D21290071D2B6 /* FBSDKShareKit.framework */; };
-		6955B6C21C9781E1000778A7 /* tmp_pic.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 6955B6C11C9781E1000778A7 /* tmp_pic.jpeg */; };
 		6973165A1C925B6800F33EFE /* CreateFavorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697316591C925B6800F33EFE /* CreateFavorViewController.swift */; };
 		699A58E81CBF1DE000D2F514 /* MyOpenFavorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699A58E71CBF1DE000D2F514 /* MyOpenFavorsViewController.swift */; };
 		69AEB9531C8FAA5A00473B32 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AEB9521C8FAA5A00473B32 /* DashboardViewController.swift */; };
 		69E435B21CC053E300467635 /* Favor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69E435B11CC053E300467635 /* Favor.swift */; };
+		69E435B61CC1A8D900467635 /* browseTabBarIconImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 69E435B51CC1A8D900467635 /* browseTabBarIconImage.png */; };
+		69E435B81CC1A98900467635 /* myOpenFavorsTabBarIconImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 69E435B71CC1A98900467635 /* myOpenFavorsTabBarIconImage.png */; };
+		69E435BA1CC1AA8F00467635 /* myRequestedFavorsTabBarIconImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 69E435B91CC1AA8F00467635 /* myRequestedFavorsTabBarIconImage.png */; };
+		69E435C11CC1ACA100467635 /* myAcceptedFavorsTabBarIconImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 69E435BC1CC1ACA100467635 /* myAcceptedFavorsTabBarIconImage.png */; };
 		CEF9C0A8D66B792EC10807DC /* Pods_Favor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F844684EB1203DEDF934E2BC /* Pods_Favor.framework */; };
 /* End PBXBuildFile section */
 
@@ -36,11 +39,14 @@
 		6917E0751C8D21290071D2B6 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		6917E0761C8D21290071D2B6 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
 		693A37671C8D28490079BDB2 /* Favor-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Favor-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
-		6955B6C11C9781E1000778A7 /* tmp_pic.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tmp_pic.jpeg; sourceTree = "<group>"; };
 		697316591C925B6800F33EFE /* CreateFavorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateFavorViewController.swift; sourceTree = "<group>"; };
 		699A58E71CBF1DE000D2F514 /* MyOpenFavorsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOpenFavorsViewController.swift; sourceTree = "<group>"; };
 		69AEB9521C8FAA5A00473B32 /* DashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		69E435B11CC053E300467635 /* Favor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Favor.swift; sourceTree = "<group>"; };
+		69E435B51CC1A8D900467635 /* browseTabBarIconImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = browseTabBarIconImage.png; sourceTree = "<group>"; };
+		69E435B71CC1A98900467635 /* myOpenFavorsTabBarIconImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myOpenFavorsTabBarIconImage.png; sourceTree = "<group>"; };
+		69E435B91CC1AA8F00467635 /* myRequestedFavorsTabBarIconImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myRequestedFavorsTabBarIconImage.png; sourceTree = "<group>"; };
+		69E435BC1CC1ACA100467635 /* myAcceptedFavorsTabBarIconImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myAcceptedFavorsTabBarIconImage.png; sourceTree = "<group>"; };
 		CC42EBDD02F54915D305CD62 /* Pods-Favor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Favor.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Favor/Pods-Favor.debug.xcconfig"; sourceTree = "<group>"; };
 		F844684EB1203DEDF934E2BC /* Pods_Favor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Favor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -91,7 +97,10 @@
 				69AEB9521C8FAA5A00473B32 /* DashboardViewController.swift */,
 				699A58E71CBF1DE000D2F514 /* MyOpenFavorsViewController.swift */,
 				6917E05B1C8D10190071D2B6 /* Assets.xcassets */,
-				6955B6C11C9781E1000778A7 /* tmp_pic.jpeg */,
+				69E435BC1CC1ACA100467635 /* myAcceptedFavorsTabBarIconImage.png */,
+				69E435B91CC1AA8F00467635 /* myRequestedFavorsTabBarIconImage.png */,
+				69E435B71CC1A98900467635 /* myOpenFavorsTabBarIconImage.png */,
+				69E435B51CC1A8D900467635 /* browseTabBarIconImage.png */,
 				6917E05D1C8D10190071D2B6 /* LaunchScreen.storyboard */,
 				6917E0601C8D10190071D2B6 /* Info.plist */,
 			);
@@ -195,9 +204,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6955B6C21C9781E1000778A7 /* tmp_pic.jpeg in Resources */,
+				69E435BA1CC1AA8F00467635 /* myRequestedFavorsTabBarIconImage.png in Resources */,
+				69E435B61CC1A8D900467635 /* browseTabBarIconImage.png in Resources */,
+				69E435C11CC1ACA100467635 /* myAcceptedFavorsTabBarIconImage.png in Resources */,
 				6917E05F1C8D10190071D2B6 /* LaunchScreen.storyboard in Resources */,
 				6917E05C1C8D10190071D2B6 /* Assets.xcassets in Resources */,
+				69E435B81CC1A98900467635 /* myOpenFavorsTabBarIconImage.png in Resources */,
 				6917E05A1C8D10190071D2B6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

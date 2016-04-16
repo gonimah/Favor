@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class MyOpenFavorsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, DashboardDelegate {
     @IBOutlet weak var listItems: UITableView!
@@ -15,6 +16,7 @@ class MyOpenFavorsViewController: UIViewController, UITableViewDataSource, UITab
     var image : UIImage!
     var profilePicUrl = ""
     var displayName = ""
+    let ref = Firebase(url:"https://dummyfavor.firebaseio.com/favor")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +25,19 @@ class MyOpenFavorsViewController: UIViewController, UITableViewDataSource, UITab
         
         displayUserInfo(NSURL(string: profilePicUrl)!)
         print("profilePicUrl= \(profilePicUrl)")
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        ref.observeEventType(.Value, withBlock: { snapshot in
+            var newItems = [String]()
+            for item in snapshot.children {
+                let favorItem = Favor(snapshot: item as! FDataSnapshot)
+                
+                newItems.append(favorItem.name)
+            }
+            self.myOpenFavors = newItems
+            self.listItems.reloadData()
+        })
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

@@ -80,7 +80,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         }
     }
     
-    
     func getFBdata() {
         var dict : NSDictionary!
         FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, picture.type(small), email"]).startWithCompletionHandler({ (connection, result, error) -> Void in
@@ -98,6 +97,13 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                 self.presentViewController(tabBarController, animated: true, completion: nil)
             }
         })
+    }
+    
+    @IBAction func loginButtonAction(sender: AnyObject) {
+        // todo email authentication for non-facebook users
+        let tabBarController = self.storyboard?.instantiateViewControllerWithIdentifier("tabBarController") as! UITabBarController
+        tabBarController.viewControllers![0] as! MyOpenFavorsViewController
+        self.presentViewController(tabBarController, animated: true, completion: nil)
     }
     
     func signUpButtonAction(sender:UIButton!) {
