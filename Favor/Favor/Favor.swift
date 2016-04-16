@@ -9,7 +9,6 @@ import Foundation
 import Firebase
 
 struct Favor {
-    
     let key: String!
     let name: String!
     let addedByUser: String!

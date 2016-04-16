@@ -14,35 +14,9 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         if (FBSDKAccessToken.currentAccessToken() != nil) {
-            //fetchUserData()
             getFBdata()
         } else {
-            let facebookLoginButton : FBSDKLoginButton = FBSDKLoginButton()
-            facebookLoginButton.readPermissions = ["public_profile", "email", "user_friends"]
-            facebookLoginButton.delegate = self
-            
-            view.addSubview(facebookLoginButton)
-            facebookLoginButton.translatesAutoresizingMaskIntoConstraints = false
-            
-            let facebookLoginButtonHorizontalConstraint = NSLayoutConstraint(item: facebookLoginButton, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: loginButton, attribute: NSLayoutAttribute.CenterX, multiplier: 1, constant: 0)
-            view.addConstraint(facebookLoginButtonHorizontalConstraint)
-            
-            let facebookLoginButtonVerticalConstraint = NSLayoutConstraint(item: facebookLoginButton, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: loginButton, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: 10)
-            view.addConstraint(facebookLoginButtonVerticalConstraint)
-            
-            let signUpButton   = UIButton(type: UIButtonType.System) as UIButton
-            signUpButton.setTitle("Sign up", forState: UIControlState.Normal)
-            signUpButton.titleLabel?.font = UIFont(name: "Avenir Book", size: 15.0)
-            signUpButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-            signUpButton.addTarget(self, action: "signUpButtonAction:", forControlEvents: UIControlEvents.TouchUpInside)
-            signUpButton.translatesAutoresizingMaskIntoConstraints = false
-            view.addSubview(signUpButton)
-            
-            let signUpButtonHorizontalConstraint = NSLayoutConstraint(item: signUpButton, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: facebookLoginButton, attribute: NSLayoutAttribute.CenterX, multiplier: 1, constant: 0)
-            view.addConstraint(signUpButtonHorizontalConstraint)
-            
-            let signUpButtonVerticalConstraint = NSLayoutConstraint(item: signUpButton, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: facebookLoginButton, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: 10)
-            view.addConstraint(signUpButtonVerticalConstraint)
+            addFacebookAndSignUpButtons()
         }
     }
     
@@ -109,5 +83,35 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     func signUpButtonAction(sender:UIButton!) {
         print("sign up is still todo")
     }
+    
+    func addFacebookAndSignUpButtons() {
+        let facebookLoginButton : FBSDKLoginButton = FBSDKLoginButton()
+        facebookLoginButton.readPermissions = ["public_profile", "email", "user_friends"]
+        facebookLoginButton.delegate = self
+        
+        view.addSubview(facebookLoginButton)
+        facebookLoginButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        let facebookLoginButtonHorizontalConstraint = NSLayoutConstraint(item: facebookLoginButton, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: loginButton, attribute: NSLayoutAttribute.CenterX, multiplier: 1, constant: 0)
+        view.addConstraint(facebookLoginButtonHorizontalConstraint)
+        
+        let facebookLoginButtonVerticalConstraint = NSLayoutConstraint(item: facebookLoginButton, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: loginButton, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: 10)
+        view.addConstraint(facebookLoginButtonVerticalConstraint)
+        
+        let signUpButton = UIButton(type: UIButtonType.System) as UIButton
+        signUpButton.setTitle("Sign up", forState: UIControlState.Normal)
+        signUpButton.titleLabel?.font = UIFont(name: "Avenir Book", size: 15.0)
+        signUpButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+        signUpButton.addTarget(self, action: "signUpButtonAction:", forControlEvents: UIControlEvents.TouchUpInside)
+        signUpButton.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(signUpButton)
+        
+        let signUpButtonHorizontalConstraint = NSLayoutConstraint(item: signUpButton, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: facebookLoginButton, attribute: NSLayoutAttribute.CenterX, multiplier: 1, constant: 0)
+        view.addConstraint(signUpButtonHorizontalConstraint)
+        
+        let signUpButtonVerticalConstraint = NSLayoutConstraint(item: signUpButton, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: facebookLoginButton, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: 10)
+        view.addConstraint(signUpButtonVerticalConstraint)
+    }
+
 }
 
