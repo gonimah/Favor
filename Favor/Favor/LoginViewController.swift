@@ -80,7 +80,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         }
     }
     
-    
     func getFBdata() {
         var dict : NSDictionary!
         FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, picture.type(small), email"]).startWithCompletionHandler({ (connection, result, error) -> Void in
@@ -91,21 +90,20 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                 let url = data!["url"] as? String
                 let userDisplayName = dict!["first_name"] as? String
                 
-                
                 let tabBarController = self.storyboard?.instantiateViewControllerWithIdentifier("tabBarController") as! UITabBarController
-                //tabBarController.selectedIndex = 0
-                //let myOpenFavorsViewController = navigationController.topViewController as! MyOpenFavorsViewController
-                //var myOpenFavorsViewController : MyOpenFavorsViewController =  MyOpenFavorsViewController()
-                //myOpenFavorsViewController.myOpenFavors = ["mayada"]
-                //tabBarController.viewControllers = [myOpenFavorsViewController]
-                
-                
-                //myOpenFavorsViewController.displayName = userDisplayName!
-                //myOpenFavorsViewController.profilePicUrl = url!
-                // TODO?? how to pass data to my view constroller within a tab
+                let myOpenFavorsViewController = tabBarController.viewControllers![0] as! MyOpenFavorsViewController
+                myOpenFavorsViewController.displayName = userDisplayName!
+                myOpenFavorsViewController.profilePicUrl = url!
                 self.presentViewController(tabBarController, animated: true, completion: nil)
             }
         })
+    }
+    
+    @IBAction func loginButtonAction(sender: AnyObject) {
+        // todo email authentication for non-facebook users
+        let tabBarController = self.storyboard?.instantiateViewControllerWithIdentifier("tabBarController") as! UITabBarController
+        tabBarController.viewControllers![0] as! MyOpenFavorsViewController
+        self.presentViewController(tabBarController, animated: true, completion: nil)
     }
     
     func signUpButtonAction(sender:UIButton!) {

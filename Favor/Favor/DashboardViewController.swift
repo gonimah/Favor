@@ -7,7 +7,7 @@
 //
 import UIKit
 
-class DashboardViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, DashboardDelegate {
+class DashboardViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
     @IBOutlet weak var listItems: UITableView!
     
     var myOpenFavors : [String] = []
@@ -78,7 +78,7 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "pushCreateFavorSegue") {
             let viewController:CreateFavorViewController = segue.destinationViewController as! CreateFavorViewController
-            viewController.delegate = self
+            //viewController.delegate = self
         }
     }
     
