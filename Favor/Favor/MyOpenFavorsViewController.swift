@@ -11,7 +11,7 @@ import Firebase
 
 class MyOpenFavorsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, DashboardDelegate {
     @IBOutlet weak var listItems: UITableView!
-    var myOpenFavors : [String] = []
+    var myOpenFavors : [Favor] = []
     
     var image : UIImage!
     var profilePicUrl = ""
@@ -22,18 +22,16 @@ class MyOpenFavorsViewController: UIViewController, UITableViewDataSource, UITab
         super.viewDidLoad()
         listItems.dataSource = self
         listItems.delegate = self
-        
         displayUserInfo(NSURL(string: profilePicUrl)!)
-        print("profilePicUrl= \(profilePicUrl)")
     }
     
     override func viewDidAppear(animated: Bool) {
         ref.observeEventType(.Value, withBlock: { snapshot in
-            var newItems = [String]()
+            var newItems = [Favor]()
             for item in snapshot.children {
                 let favorItem = Favor(snapshot: item as! FDataSnapshot)
                 
-                newItems.append(favorItem.name)
+                newItems.append(favorItem)
             }
             self.myOpenFavors = newItems
             self.listItems.reloadData()
@@ -42,9 +40,8 @@ class MyOpenFavorsViewController: UIViewController, UITableViewDataSource, UITab
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("myOpenFavorCell", forIndexPath: indexPath)
-            cell.textLabel?.text = myOpenFavors[indexPath.row]
-        cell.detailTextLabel?.text = "dummy detail for now"
-
+        cell.textLabel?.text = myOpenFavors[indexPath.row].name
+        cell.detailTextLabel?.text = "Due on \(myOpenFavors[indexPath.row].deadline)"
         return cell
     }
     
@@ -52,8 +49,8 @@ class MyOpenFavorsViewController: UIViewController, UITableViewDataSource, UITab
         return myOpenFavors.count
     }
     
-    func refreshOpenFavors(openFavor: String, deadline: String) {
-        myOpenFavors.append(openFavor + " by " + deadline)
+    func refreshOpenFavors(openFavor: Favor) {
+        myOpenFavors.append(openFavor)
         listItems.reloadData()
         print(myOpenFavors)
     }

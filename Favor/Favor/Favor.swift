@@ -5,7 +5,6 @@
 //  Created by Gonimah, Mayada on 4/14/16.
 //  Copyright © 2016 Gonimah, Mayada. All rights reserved.
 //
-
 import Foundation
 import Firebase
 
@@ -16,13 +15,14 @@ struct Favor {
     let addedByUser: String!
     let ref: Firebase?
     var completed: Bool!
+    let deadline : String!
     
-    // Initialize from arbitrary data
-    init(name: String, addedByUser: String, completed: Bool, key: String = "") {
+    init(name: String, addedByUser: String, completed: Bool, key: String = "", deadline: String) {
         self.key = key
         self.name = name
         self.addedByUser = addedByUser
         self.completed = completed
+        self.deadline = deadline
         self.ref = nil
     }
     
@@ -31,6 +31,7 @@ struct Favor {
         name = snapshot.value["name"] as! String
         addedByUser = snapshot.value["addedByUser"] as! String
         completed = snapshot.value["completed"] as! Bool
+        deadline = snapshot.value["deadline"] as? String
         ref = snapshot.ref
     }
     
@@ -38,7 +39,8 @@ struct Favor {
         return [
             "name": name,
             "addedByUser": addedByUser,
-            "completed": completed
+            "completed": completed,
+            "deadline" : deadline
         ]
     }
 }

@@ -5,12 +5,11 @@
 //  Created by Gonimah, Mayada on 3/10/16.
 //  Copyright © 2016 Gonimah, Mayada. All rights reserved.
 //
-
 import UIKit
 import Firebase
 
 protocol DashboardDelegate {
-    func refreshOpenFavors(favor: String, deadline: String)
+    func refreshOpenFavors(favor: Favor)
 }
 
 class CreateFavorViewController: UIViewController {
@@ -28,11 +27,10 @@ class CreateFavorViewController: UIViewController {
             if favorDeadline == "" {
                 dateFormatter.dateStyle = .FullStyle
                 favorDeadline = dateFormatter.stringFromDate(NSDate())
-                
             }
-            delegate?.refreshOpenFavors(favorName, deadline: self.favorDeadline)
             // add favor to firebase db
-            let favor = Favor(name: favorName, addedByUser: "dummy", completed: false)
+            let favor = Favor(name: favorName, addedByUser: "dummy", completed: false, deadline: favorDeadline)
+            delegate?.refreshOpenFavors(favor)
             let favorRef = self.ref.childByAppendingPath(favorName)
             favorRef.setValue(favor.toAnyObject())
         }
